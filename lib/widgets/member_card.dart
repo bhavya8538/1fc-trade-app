@@ -6,135 +6,33 @@ class MemberCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
-
     return Container(
-      height: 78,
-      padding: const EdgeInsets.symmetric(horizontal: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(.05),
-            blurRadius: 15,
-            offset: const Offset(0, 6),
+            blurRadius: 12,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Image.asset("assets/images/nse.png", height: 28),
 
-          /// NSE
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+          const SizedBox(width: 24),
 
-                Image.asset(
-                  "assets/images/nse.png",
-                  height: 16,
-                ),
+          Container(width: 1, height: 24, color: Colors.grey.shade300),
 
-                const SizedBox(height: 5),
+          const SizedBox(width: 24),
 
-                const Text(
-                  "Member",
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          Container(
-            width: 1,
-            height: 38,
-            color: AppColors.border,
-          ),
-
-          /// BSE
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-
-                Image.asset(
-                  "assets/images/bse.png",
-                  height: 16,
-                ),
-
-                const SizedBox(height: 5),
-
-                const Text(
-                  "Member",
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          Container(
-            width: 1,
-            height: 38,
-            color: AppColors.border,
-          ),
-
-          /// SEBI
-          Expanded(
-            flex: 2,
-            child: Row(
-              children: [
-
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffEAF8F2),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.verified_user,
-                    size: 18,
-                    color: AppColors.primary,
-                  ),
-                ),
-
-                const SizedBox(width: 10),
-
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-                      Text(
-                        "SEBI Registered",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: w * .028,
-                        ),
-                      ),
-
-                      const SizedBox(height: 3),
-
-                      Text(
-                        "INZ000333130",
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: w * .026,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          Transform.translate(
+            offset: const Offset(0, -7),
+            child: Image.asset("assets/images/bse.png", height: 48),
           ),
         ],
       ),

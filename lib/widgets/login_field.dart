@@ -20,7 +20,7 @@ class LoginField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 58,
-      margin: const EdgeInsets.only(bottom: 18),
+      margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
