@@ -3,18 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../theme/colors.dart';
 import '../../widgets/login_field.dart';
-import '../../widgets/member_card.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     final size = MediaQuery.of(context).size;
     final h = size.height;
     final w = size.width;
-    return Scaffold(
-      backgroundColor: AppColors.background,
+
+    final double loginFieldWidth = w * 0.60;
+   return Scaffold(
+  resizeToAvoidBottomInset: false,
+  backgroundColor: const Color(0xFFF4F4ED),
       body: SafeArea(
         child: Stack(
           children: [
@@ -34,9 +37,9 @@ class LoginScreen extends StatelessWidget {
 
             /// Mascot
             Positioned(
-              right: 3,
-              top: h * .02,
-              child: Image.asset("assets/images/mascot1.png", height: h * .50),
+              right: -70,
+              top: h * .03,
+              child: Image.asset("assets/images/mascot4.png", height: h * .50),
             ),
 
             Positioned.fill(
@@ -48,34 +51,11 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /// Header
                     Row(
                       children: [
-                        Image.asset("assets/images/logo.png", width: w * .18),
+                        Image.asset("assets/images/logo.png", width: w * .22),
 
                         const Spacer(),
-
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.end,
-                        //   children: [
-                        //     Text(
-                        //       "Invest. Trade.",
-                        //       style: TextStyle(
-                        //         fontSize: w * .04,
-                        //         fontWeight: FontWeight.w500,
-                        //       ),
-                        //     ),
-
-                        //     Text(
-                        //       "Grow with Confidence.",
-                        //       style: TextStyle(
-                        //         color: AppColors.primary,
-                        //         fontSize: w * .04,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
 
@@ -83,21 +63,30 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       "1FC Securities Pvt. Ltd.",
                       style: GoogleFonts.poppins(
-                        fontSize: 22,
+                        fontSize: 21,
                         fontWeight: FontWeight.w800,
                         color: AppColors.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      "Trade Smart, Pay Less",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       "₹1 Brokerage*",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 12,
                         color: AppColors.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
-                    const SizedBox(height: 50), // <-- Sirf yaha gap add karo
+                    const SizedBox(height: 65), // <-- Sirf yaha gap add karo
 
                     Text(
                       "Welcome Back!",
@@ -124,79 +113,51 @@ class LoginScreen extends StatelessWidget {
                     //     child: const MemberCard(),
                     //   ),
                     // ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 5),
 
-                    Row(
-                      children: [
-                        Expanded(
-                          child: LoginField(
-                            hint: "User ID",
-                            icon: "assets/icons/user.png",
-                            suffix: const Icon(
-                              Icons.badge_outlined,
-                              color: Colors.grey,
-                            ),
-                          ),
+                    SizedBox(
+                      width: loginFieldWidth,
+                      child: LoginField(
+                        hint: "User ID",
+                        icon: "assets/icons/user.png",
+                        suffix: const Icon(
+                          Icons.badge_outlined,
+                          color: Colors.grey,
                         ),
-
-                        const SizedBox(width: 10),
-
-                        const SizedBox(
-                          width: 110, // EXACTLY same width as Get OTP button
-                        ),
-                      ],
+                      ),
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: LoginField(
-                            hint: "Password",
-                            icon: "assets/icons/padlock.png",
-                            obscure: true,
-                            suffix: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Image.asset(
-                                "assets/icons/show.png",
-                                width: 18,
-                              ),
-                            ),
+                    SizedBox(
+                      width: loginFieldWidth,
+                      child: LoginField(
+                        hint: "Password",
+                        icon: "assets/icons/padlock.png",
+                        obscure: true,
+                        suffix: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Image.asset(
+                            "assets/icons/show.png",
+                            width: 18,
                           ),
                         ),
-
-                        const SizedBox(width: 10),
-
-                        const SizedBox(width: 110),
-                      ],
+                      ),
                     ),
 
                     /// OTP
                     Row(
                       children: [
-                        Expanded(
-                          child: Container(
-                            height: 58,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(18),
-                              border: Border.all(color: AppColors.border),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
-                                  Icons.security,
-                                  color: AppColors.primary,
-                                ),
-                                hintText: "OTP / TOTP",
-                              ),
-                            ),
+                        SizedBox(
+                          width: loginFieldWidth,
+                          child: LoginField(
+                            hint: "OTP / TOTP",
+                            icon: "assets/icons/security.png",
                           ),
                         ),
 
                         const SizedBox(width: 10),
 
                         SizedBox(
-                          height: 58,
+                          width: 108,
+                          height: 52,
                           child: OutlinedButton(
                             onPressed: () {},
                             style: OutlinedButton.styleFrom(
@@ -205,13 +166,16 @@ class LoginScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
+                              padding: EdgeInsets.zero,
                             ),
-                            child: const Text("Get OTP"),
+                            child: const Text(
+                              "Get OTP",
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ],
                     ),
-
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -334,87 +298,110 @@ class LoginScreen extends StatelessWidget {
                     // const SizedBox(height: 12),
 
                     // const Divider(),
-                    const SizedBox(height: 1),
 
-                    Center(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                  foregroundColor:
-                                      Colors.black, // <-- Text color
-                                  padding: EdgeInsets.zero,
-                                  minimumSize: Size.zero,
-                                  tapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  visualDensity: VisualDensity.compact,
-                                ),
-                                child: const Text(
-                                  "Privacy Policy",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                    // Center(
+                    //   child: Row(
+                    //     children: [
+                    //       Expanded(
+                    //         child: Align(
+                    //           alignment: Alignment.centerRight,
+                    //           child: TextButton(
+                    //             onPressed: () {},
+                    //             style: TextButton.styleFrom(
+                    //               foregroundColor:
+                    //                   Colors.black, // <-- Text color
+                    //               padding: EdgeInsets.zero,
+                    //               minimumSize: Size.zero,
+                    //               tapTargetSize:
+                    //                   MaterialTapTargetSize.shrinkWrap,
+                    //               visualDensity: VisualDensity.compact,
+                    //             ),
+                    //             child: const Text(
+                    //               "Privacy Policy",
+                    //               style: TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 12,
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
 
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text("|"),
-                          ),
+                    //       const Padding(
+                    //         padding: EdgeInsets.symmetric(horizontal: 10),
+                    //         child: Text("|"),
+                    //       ),
 
-                          Expanded(
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                  foregroundColor: Colors.black,
-                                  padding: EdgeInsets.zero,
-                                  minimumSize: Size.zero,
-                                  tapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  visualDensity: VisualDensity.compact,
-                                ),
-                                child: const Text(
-                                  "Terms & Conditions",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    //       Expanded(
+                    //         child: Align(
+                    //           alignment: Alignment.centerLeft,
+                    //           child: TextButton(
+                    //             onPressed: () {},
+                    //             style: TextButton.styleFrom(
+                    //               foregroundColor: Colors.black,
+                    //               padding: EdgeInsets.zero,
+                    //               minimumSize: Size.zero,
+                    //               tapTargetSize:
+                    //                   MaterialTapTargetSize.shrinkWrap,
+                    //               visualDensity: VisualDensity.compact,
+                    //             ),
+                    //             child: const Text(
+                    //               "Terms & Conditions",
+                    //               style: TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 12,
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     const SizedBox(height: 11),
                     const Center(
                       child: Text(
-                        "NSE Member Code: 90120 | BSE Member Code: 6694\n"
-                        "SEBI Regn. No.: INZ000158323",
+                        "NSE   |   BSE  |  SEBI  •  INZ000158323",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 11,
-                          color: Colors.grey,
+                          letterSpacing: 0.8,
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           height: 1.4,
                         ),
                       ),
                     ),
-
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
+                    Center(
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 145, 144, 144),
+                            fontSize: 12,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: "*",
+                              style: TextStyle(
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            TextSpan(text: "₹1 per trade cash and F&O"),
+                          ],
+                        ),
+                      ),
+                    ),
                     const Center(
                       child: Text(
                         "© 2026 1FC Securities Pvt. Ltd. All Rights Reserved.",
-                        style: TextStyle(color: Colors.grey, fontSize: 10),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                          letterSpacing: 0.7,
+                        ),
                       ),
                     ),
 
@@ -422,7 +409,11 @@ class LoginScreen extends StatelessWidget {
                     const Center(
                       child: Text(
                         "Version 1.0.0",
-                        style: TextStyle(color: Colors.grey, fontSize: 10),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                          letterSpacing: 0.7,
+                        ),
                       ),
                     ),
                   ],
@@ -431,29 +422,6 @@ class LoginScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _securityCard(IconData icon, String title) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.border),
-      ),
-      child: Column(
-        children: [
-          Icon(icon, color: AppColors.primary, size: 28),
-
-          // const SizedBox(height: 10),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-          ),
-        ],
       ),
     );
   }
