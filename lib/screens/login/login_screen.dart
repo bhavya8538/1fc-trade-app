@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
             /// Mascot
             Positioned(
               right: -70,
-              top: h * .03,
+              top: h * .025,
               child: Image.asset("assets/images/mascot4.png", height: h * .50),
             ),
 
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
 
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 30),
                     Text(
                       "1FC Securities Pvt. Ltd.",
                       style: GoogleFonts.poppins(
@@ -80,13 +80,14 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       "₹1 Brokerage*",
                       style: TextStyle(
+                        letterSpacing: 0.8,
                         fontSize: 12,
                         color: AppColors.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
-                    const SizedBox(height: 65), // <-- Sirf yaha gap add karo
+                    const SizedBox(height: 50), // <-- Sirf yaha gap add karo
 
                     Text(
                       "Welcome Back!",
@@ -361,7 +362,7 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 11),
                     const Center(
                       child: Text(
-                        "NSE   |   BSE  |  SEBI  •  INZ000158323",
+                        "NSE   |   BSE  |  SEBI  •  INZ000333130",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 11,
@@ -372,35 +373,37 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 5),
                     Center(
                       child: RichText(
                         text: const TextSpan(
                           style: TextStyle(
-                            color: Color.fromARGB(255, 145, 144, 144),
+                            color: AppColors.primary,
                             fontSize: 12,
                           ),
                           children: [
                             TextSpan(
-                              text: "*",
+                              text: "* ",
                               style: TextStyle(
                                 color: AppColors.primary,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 12,
                               ),
                             ),
-                            TextSpan(text: "₹1 per trade cash and F&O"),
+                            TextSpan(text: "₹1 per Trade in Cash and F&O"),
                           ],
                         ),
                       ),
                     ),
+                    
+                    const SizedBox(height: 30),
                     const Center(
                       child: Text(
                         "© 2026 1FC Securities Pvt. Ltd. All Rights Reserved.",
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 10,
-                          letterSpacing: 0.7,
+                          letterSpacing: 0.9,
                         ),
                       ),
                     ),
