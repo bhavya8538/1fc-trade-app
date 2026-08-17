@@ -35,7 +35,7 @@ class OneFCTrade extends StatelessWidget {
 
       // Change this to dark while designing/testing
        themeMode: ThemeMode.system,
-
+      // themeMode: ThemeMode.dark,
       home: const LoginRouter(),
     );
   }
