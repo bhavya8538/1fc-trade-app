@@ -19,8 +19,22 @@ class OneFCTrade extends StatelessWidget {
 
       theme: ThemeData(
         useMaterial3: true,
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: const Color(0xFFF4F4ED),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
+
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF071F1D),
+        textTheme: GoogleFonts.poppinsTextTheme(
+          ThemeData.dark().textTheme,
+        ),
+      ),
+
+      // Change this to dark while designing/testing
+      themeMode: ThemeMode.dark,
 
       home: const LoginRouter(),
     );

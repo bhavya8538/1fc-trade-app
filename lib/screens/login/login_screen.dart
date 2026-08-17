@@ -9,15 +9,31 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
     final h = size.height;
     final w = size.width;
 
     final double loginFieldWidth = w * 0.60;
-   return Scaffold(
-  resizeToAvoidBottomInset: false,
-  backgroundColor: const Color(0xFFF4F4ED),
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final backgroundColor = isDark
+        ? const Color(0xFF071F1D)
+        : const Color(0xFFF4F4ED);
+
+    final textColor = isDark
+        ? const Color(0xFFF5F7F6)
+        : const Color(0xFF1E1E1E);
+
+    final secondaryTextColor = isDark ? const Color(0xFFA8B5B2) : Colors.grey;
+
+    final borderColor = isDark
+        ? const Color(0xFF31504B)
+        : const Color(0xFFE2E2E2);
+
+    final primaryColor = isDark ? const Color(0xFF00A67D) : AppColors.primary;
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -27,11 +43,7 @@ class LoginScreen extends StatelessWidget {
               top: 120,
               child: Opacity(
                 opacity: .07,
-                child: Icon(
-                  Icons.show_chart,
-                  size: 350,
-                  color: AppColors.primary,
-                ),
+                child: Icon(Icons.show_chart, size: 350, color: primaryColor),
               ),
             ),
 
@@ -65,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 21,
                         fontWeight: FontWeight.w800,
-                        color: AppColors.primary,
+                        color: primaryColor,
                       ),
                     ),
                     const SizedBox(height: 3),
@@ -73,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                       "Trade Smart, Pay Less",
                       style: TextStyle(
                         fontSize: 15,
-                        color: AppColors.primary,
+                        color: primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -82,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         letterSpacing: 0.8,
                         fontSize: 12,
-                        color: AppColors.primary,
+                        color: primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -94,13 +106,14 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: w * .06,
                         fontWeight: FontWeight.bold,
+                        color: textColor,
                       ),
                     ),
 
                     // const SizedBox(height: 8),
                     Text(
                       "Login to your trading account",
-                      style: TextStyle(color: Colors.grey, fontSize: 17),
+                      style: TextStyle(color: textColor, fontSize: 17),
                     ),
 
                     SizedBox(height: h * .02, width: w * 0.2),
@@ -162,8 +175,8 @@ class LoginScreen extends StatelessWidget {
                           child: OutlinedButton(
                             onPressed: () {},
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: AppColors.primary,
-                              side: const BorderSide(color: AppColors.primary),
+                              foregroundColor: primaryColor,
+                              side: BorderSide(color: primaryColor),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
@@ -181,9 +194,9 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
-                        child: const Text(
+                        child: Text(
                           "Forgot Password?",
-                          style: TextStyle(color: AppColors.primary),
+                          style: TextStyle(color: primaryColor),
                         ),
                       ),
                     ),
@@ -195,7 +208,7 @@ class LoginScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
+                          backgroundColor: primaryColor,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
@@ -223,20 +236,20 @@ class LoginScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 10),
-                    const Row(
+                    Row(
                       children: [
-                        Expanded(child: Divider()),
+                        Expanded(child: Divider(color: borderColor)),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 14),
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
                           child: Text(
                             "OR",
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: secondaryTextColor,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
-                        Expanded(child: Divider()),
+                        Expanded(child: Divider(color: borderColor)),
                       ],
                     ),
 
@@ -247,8 +260,8 @@ class LoginScreen extends StatelessWidget {
                       child: OutlinedButton(
                         onPressed: () {},
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: AppColors.primary,
-                          side: const BorderSide(color: AppColors.primary),
+                          foregroundColor: primaryColor,
+                          side: BorderSide(color: primaryColor),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                           ),
@@ -360,14 +373,16 @@ class LoginScreen extends StatelessWidget {
                     //   ),
                     // ),
                     const SizedBox(height: 11),
-                    const Center(
+                    Center(
                       child: Text(
                         "NSE   |   BSE  |  SEBI  •  INZ000333130",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 11,
                           letterSpacing: 0.8,
-                          color: Colors.black,
+                          color: isDark
+                              ? const Color(0xFFA8B5B2)
+                              : Colors.black,
                           fontWeight: FontWeight.w500,
                           height: 1.4,
                         ),
@@ -376,32 +391,31 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 5),
                     Center(
                       child: RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            color: AppColors.primary,
-                            fontSize: 12,
-                          ),
+                        text: TextSpan(
+                          style: TextStyle(color: primaryColor, fontSize: 12),
                           children: [
                             TextSpan(
                               text: "* ",
                               style: TextStyle(
-                                color: AppColors.primary,
+                                color: primaryColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
                               ),
                             ),
-                            TextSpan(text: "₹1 per Trade in Cash and F&O"),
+                            const TextSpan(
+                              text: "₹1 per Trade in Cash and F&O",
+                            ),
                           ],
                         ),
                       ),
                     ),
-                    
+
                     const SizedBox(height: 30),
-                    const Center(
+                    Center(
                       child: Text(
                         "© 2026 1FC Securities Pvt. Ltd. All Rights Reserved.",
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: isDark ? const Color(0xFF6F8580) : Colors.grey,
                           fontSize: 10,
                           letterSpacing: 0.9,
                         ),
@@ -409,11 +423,11 @@ class LoginScreen extends StatelessWidget {
                     ),
 
                     // const SizedBox(height: 4),
-                    const Center(
+                    Center(
                       child: Text(
                         "Version 1.0.0",
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: isDark ? const Color(0xFF6F8580) : Colors.grey,
                           fontSize: 10,
                           letterSpacing: 0.7,
                         ),

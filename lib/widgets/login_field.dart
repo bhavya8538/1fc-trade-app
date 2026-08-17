@@ -33,18 +33,48 @@ class _LoginFieldState extends State<LoginField> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final fieldColor = isDark
+        ? const Color(0xFF102C29)
+        : Colors.white;
+
+    final borderColor = isDark
+        ? const Color(0xFF31504B)
+        : AppColors.border;
+
+    final hintColor = isDark
+        ? const Color(0xFFA8B5B2)
+        : Colors.grey;
+
+    final iconColor = isDark
+        ? const Color(0xFF00A67D)
+        : AppColors.primary;
+
+    final textColor = isDark
+        ? const Color(0xFFF5F7F6)
+        : const Color(0xFF1E1E1E);
+
     return Container(
       height: 52,
       margin: const EdgeInsets.only(bottom: 6),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: fieldColor,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: AppColors.border,
+          color: borderColor,
         ),
       ),
       child: TextField(
         obscureText: _obscureText,
+
+        style: TextStyle(
+          color: textColor,
+          fontSize: 15,
+        ),
+
+        cursorColor: iconColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
 
@@ -54,15 +84,15 @@ class _LoginFieldState extends State<LoginField> {
 
           hintText: widget.hint,
 
-          hintStyle: const TextStyle(
-            color: Colors.grey,
+          hintStyle: TextStyle(
+            color: hintColor,
             fontSize: 15,
           ),
 
           prefixIcon: widget.iconData != null
               ? Icon(
                   widget.iconData,
-                  color: AppColors.primary,
+                  color: iconColor,
                 )
               : Padding(
                   padding: const EdgeInsets.all(15),
@@ -93,7 +123,7 @@ class _LoginFieldState extends State<LoginField> {
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                       key: ValueKey(_obscureText),
-                      color: Colors.grey,
+                      color: hintColor,
                     ),
                   ),
                 )

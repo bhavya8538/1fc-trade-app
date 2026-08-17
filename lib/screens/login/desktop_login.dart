@@ -99,12 +99,12 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                 end: Alignment.bottomRight,
                                 colors: [
                                   AppColors.primary,
-                                  AppColors.primary.withOpacity(0.82),
+                                  AppColors.primary.withValues(alpha: 0.82),
                                 ],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.primary.withOpacity(0.18),
+                                  color: AppColors.primary.withValues(alpha: 0.18),
                                   blurRadius: 30,
                                   offset: const Offset(0, 15),
                                 ),
@@ -121,7 +121,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                     height: 330,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.white.withOpacity(.06),
+                                      color: Colors.white.withValues(alpha: .06),
                                     ),
                                   ),
                                 ),
@@ -134,7 +134,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                     height: 300,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.white.withOpacity(.05),
+                                      color: Colors.white.withValues(alpha: .05),
                                     ),
                                   ),
                                 ),
@@ -203,7 +203,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                                     "Invest Better.",
                                                     style: TextStyle(
                                                       color: Colors.white
-                                                          .withOpacity(.78),
+                                                          .withValues(alpha: .78),
                                                       fontSize: 40,
                                                       fontWeight:
                                                           FontWeight.w800,
@@ -233,7 +233,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                                     "and investing with 1FC Securities.",
                                                     style: TextStyle(
                                                       color: Colors.white
-                                                          .withOpacity(.75),
+                                                          .withValues(alpha: .75),
                                                       fontSize: 15,
                                                       height: 1.6,
                                                     ),
@@ -295,7 +295,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black.withOpacity(0.06),
+                                        color: Colors.black.withValues(alpha: 0.06),
                                         blurRadius: 30,
                                         offset: const Offset(0, 12),
                                       ),
