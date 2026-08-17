@@ -66,13 +66,8 @@ desktop/web login experiences.
 ├── test/
 ├── pubspec.yaml
 └── README.md
-```
-
-## Responsive Login Architecture
-
-The project uses screen width to select the appropriate UI:
-
-``` dart
+## Responsive Login Architecture The project uses screen width to select the appropriate UI:
+dart
 final width = MediaQuery.sizeOf(context).width;
 
 if (width >= 700) {
@@ -80,29 +75,18 @@ if (width >= 700) {
 }
 
 return const LoginScreen();
-```
-
 ### Mobile
-
-``` text
+text
 < 700px
    ↓
 LoginScreen
-```
-
-The existing mobile UI is optimized for Android/touch devices.
-
-### Desktop/Web
-
-``` text
+The existing mobile UI is optimized for Android/touch devices. ### Desktop/Web
+text
 >= 700px
    ↓
 DesktopLogin
-```
-
 The desktop UI uses a two-panel layout:
-
-``` text
+text
 ┌──────────────────────────────┬───────────────────────────┐
 │                              │                           │
 │     1FC Promotional Panel    │       Login Card          │
@@ -116,200 +100,81 @@ The desktop UI uses a two-panel layout:
 │                              │       Open New Account     │
 │                              │                           │
 └──────────────────────────────┴───────────────────────────┘
-```
-
-## Design
-
-Primary page background:
-
-``` text
+## Design Primary page background:
+text
 #F4F4ED
-```
-
 Brand color is maintained through:
-
-``` dart
+dart
 AppColors.primary
-```
-
 Typography uses:
-
-``` dart
+dart
 GoogleFonts.poppinsTextTheme()
-```
-
-The desktop promotional panel contains the large mascot, **Trade
-Smarter. Invest Better.** messaging, decorative financial graphics, and
-feature information.
-
-## Assets
-
-Typical assets include:
-
-``` text
+The desktop promotional panel contains the large mascot, **Trade Smarter. Invest Better.** messaging, decorative financial graphics, and feature information. ## Assets Typical assets include:
+text
 assets/
 └── images/
     ├── logo.png
     └── mascot4.png
-```
-
-Register assets in `pubspec.yaml`:
-
-``` yaml
+Register assets in pubspec.yaml:
+yaml
 flutter:
   assets:
     - assets/images/
-```
-
-## Getting Started
-
-### Requirements
-
-Install:
-
--   Flutter SDK
--   Android Studio for Android development
--   Chrome for Web
--   Visual Studio with Desktop development with C++ for Windows
-
-Check the environment:
-
-``` powershell
+## Getting Started ### Requirements Install: - Flutter SDK - Android Studio for Android development - Chrome for Web - Visual Studio with Desktop development with C++ for Windows Check the environment:
+powershell
 flutter doctor
-```
-
 ### Install dependencies
-
-``` powershell
+powershell
 flutter pub get
-```
-
-## Running the Application
-
-### Android
-
-``` powershell
+## Running the Application ### Android
+powershell
 flutter devices
 flutter run
-```
-
 Or:
-
-``` powershell
+powershell
 flutter run -d <device-id>
-```
-
 ### Chrome
-
-``` powershell
+powershell
 flutter run -d chrome
-```
-
 ### Windows
-
-``` powershell
+powershell
 flutter run -d windows
-```
-
-## Building
-
-### Web
-
-``` powershell
+## Building ### Web
+powershell
 flutter build web
-```
-
 Output:
-
-``` text
+text
 build/web/
-```
-
 ### Windows
-
-``` powershell
+powershell
 flutter build windows
-```
-
 ### Android Debug APK
-
-``` powershell
+powershell
 flutter build apk --debug
-```
-
 ### Android Release APK
-
-``` powershell
+powershell
 flutter build apk --release
-```
-
-## Login Components
-
-### User ID
-
-Trading account user ID input.
-
-### Password
-
-Password input with visibility toggle.
-
-### OTP / TOTP
-
-OTP/TOTP input with a separate **Get OTP** button.
-
-### Actions
-
--   Login
--   Forgot Password
--   Open New Account
-
-## Regulatory/Footer Information
-
-The application displays:
-
-``` text
+## Login Components ### User ID Trading account user ID input. ### Password Password input with visibility toggle. ### OTP / TOTP OTP/TOTP input with a separate **Get OTP** button. ### Actions - Login - Forgot Password - Open New Account ## Regulatory/Footer Information The application displays:
+text
 NSE Member Code: 90120
 BSE Member Code: 6694
 SEBI Regn. No.: INZ000158323
-```
-
 and:
-
-``` text
+text
 © 2026 1FC Securities Pvt. Ltd. All Rights Reserved.
 Version 1.0.0
-```
-
-The regulatory information is intentionally kept visually secondary to
-the login form.
-
-## Keyboard Handling
-
-For the desktop-style layout on large/foldable Android screens, the UI
-can prevent keyboard insets from resizing the composition:
-
-``` dart
+The regulatory information is intentionally kept visually secondary to the login form. ## Keyboard Handling For the desktop-style layout on large/foldable Android screens, the UI can prevent keyboard insets from resizing the composition:
+dart
 resizeToAvoidBottomInset: false,
-```
-
 and, where required:
-
-``` dart
+dart
 MediaQuery.removeViewInsets(
   context: context,
   removeBottom: true,
   child: ...
 )
-```
-
-The intention is to keep the desktop composition fixed when the keyboard
-opens.
-
-## Development Guidelines
-
-Keep the mobile and desktop UI separate:
-
-``` text
+The intention is to keep the desktop composition fixed when the keyboard opens. ## Development Guidelines Keep the mobile and desktop UI separate:
+text
 login_screen.dart
     ↓
 Mobile UI
@@ -317,14 +182,8 @@ Mobile UI
 desktop_login.dart
     ↓
 Desktop/Web UI
-```
-
-Business logic should eventually be shared through services rather than
-duplicated inside both screens.
-
-Recommended future structure:
-
-``` text
+Business logic should eventually be shared through services rather than duplicated inside both screens. Recommended future structure:
+text
 lib/
 ├── services/
 │   ├── auth_service.dart
@@ -336,64 +195,22 @@ lib/
 │       ├── login_screen.dart
 │       └── desktop_login.dart
 └── widgets/
-```
-
-## Future Development
-
-Possible next steps:
-
--   Real authentication API
--   OTP API
--   TOTP authentication
--   Forgot password flow
--   Open account flow
--   Session management
--   Secure token storage
--   Validation and error states
--   Loading states
--   Trading dashboard
--   Portfolio
--   Orders
--   Positions
--   Funds
--   Profile
--   Accessibility
--   Dark mode
-
-## Troubleshooting
-
-Clean and rebuild:
-
-``` powershell
+## Future Development Possible next steps: - Real authentication API - OTP API - TOTP authentication - Forgot password flow - Open account flow - Session management - Secure token storage - Validation and error states - Loading states - Trading dashboard - Portfolio - Orders - Positions - Funds - Profile - Accessibility - Dark mode ## Troubleshooting Clean and rebuild:
+powershell
 flutter clean
 flutter pub get
 flutter run
-```
-
 Check Flutter:
-
-``` powershell
+powershell
 flutter doctor -v
-```
-
 Check devices:
-
-``` powershell
+powershell
 flutter devices
-```
-
 Verbose run:
-
-``` powershell
+powershell
 flutter run -v
-```
-
-For Android Gradle failures, verify the configured JDK, Android SDK,
-build-tools, Gradle/AGP compatibility, and connected device/emulator.
-
-## Architecture Goal
-
-``` text
+For Android Gradle failures, verify the configured JDK, Android SDK, build-tools, Gradle/AGP compatibility, and connected device/emulator. ## Architecture Goal
+text
                  ONE FLUTTER PROJECT
                          │
               ┌──────────┴──────────┐
@@ -407,21 +224,9 @@ build-tools, Gradle/AGP compatibility, and connected device/emulator.
                   Shared Services
                          │
               Authentication / APIs
-```
-
-The goal is to maintain one codebase while providing
-platform-appropriate UI.
-
-## Version
-
-``` text
+The goal is to maintain one codebase while providing platform-appropriate UI. ## Version
+text
 1FC Trade
 Version 1.0.0
 © 2026 1FC Securities Pvt. Ltd.
-```
-
-## License
-
-This project is intended for use by **1FC Securities Pvt. Ltd.**
-Unauthorized distribution, modification, or commercial reuse should
-follow the organization's internal policies and applicable agreements.
+## License This project is intended for use by **1FC Securities Pvt. Ltd.** Unauthorized distribution, modification, or commercial reuse should follow the organization's internal policies and applicable agreements.
