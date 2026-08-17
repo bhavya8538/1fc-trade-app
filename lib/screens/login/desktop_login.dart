@@ -16,9 +16,29 @@ class _DesktopLoginState extends State<DesktopLogin> {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final backgroundColor = isDark
+        ? const Color(0xFF071F1D)
+        : const Color(0xFFF4F4ED);
+
+    final cardColor = Colors.white;
+
+    final textColor = isDark
+        ? const Color(0xFFF5F7F6)
+        : const Color(0xFF1E1E1E);
+
+    final secondaryTextColor = isDark ? const Color(0xFFA8B5B2) : Colors.grey;
+
+    final borderColor = isDark
+        ? const Color(0xFF31504B)
+        : const Color(0xFFE2E2DC);
+
+    final primaryColor = isDark ? const Color(0xFF00A67D) : AppColors.primary;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFF4F4ED),
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -38,9 +58,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
 
                   TextButton(
                     onPressed: () {},
-                    child: const Text(
+                    child: Text(
                       "About Us",
-                      style: TextStyle(color: Color(0xFF333333), fontSize: 14),
+                      style: TextStyle(color: textColor, fontSize: 14),
                     ),
                   ),
 
@@ -48,9 +68,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
 
                   TextButton(
                     onPressed: () {},
-                    child: const Text(
+                    child: Text(
                       "Support",
-                      style: TextStyle(color: Color(0xFF333333), fontSize: 14),
+                      style: TextStyle(color: textColor, fontSize: 14),
                     ),
                   ),
 
@@ -60,7 +80,7 @@ class _DesktopLoginState extends State<DesktopLogin> {
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.primary,
-                      side: const BorderSide(color: AppColors.primary),
+                      side: BorderSide(color: primaryColor),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 22,
                         vertical: 13,
@@ -104,7 +124,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.primary.withValues(alpha: 0.18),
+                                  color: AppColors.primary.withValues(
+                                    alpha: 0.18,
+                                  ),
                                   blurRadius: 30,
                                   offset: const Offset(0, 15),
                                 ),
@@ -121,7 +143,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                     height: 330,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.white.withValues(alpha: .06),
+                                      color: Colors.white.withValues(
+                                        alpha: .06,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -134,7 +158,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                     height: 300,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.white.withValues(alpha: .05),
+                                      color: Colors.white.withValues(
+                                        alpha: .05,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -203,7 +229,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                                     "Invest Better.",
                                                     style: TextStyle(
                                                       color: Colors.white
-                                                          .withValues(alpha: .78),
+                                                          .withValues(
+                                                            alpha: .78,
+                                                          ),
                                                       fontSize: 40,
                                                       fontWeight:
                                                           FontWeight.w800,
@@ -233,7 +261,9 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                                     "and investing with 1FC Securities.",
                                                     style: TextStyle(
                                                       color: Colors.white
-                                                          .withValues(alpha: .75),
+                                                          .withValues(
+                                                            alpha: .75,
+                                                          ),
                                                       fontSize: 15,
                                                       height: 1.6,
                                                     ),
@@ -290,12 +320,12 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(24),
-                                    border: Border.all(
-                                      color: const Color(0xFFE8E8E1),
-                                    ),
+                                    border: Border.all(color: borderColor),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.06),
+                                        color: Colors.black.withValues(
+                                          alpha: 0.06,
+                                        ),
                                         blurRadius: 30,
                                         offset: const Offset(0, 12),
                                       ),
@@ -315,12 +345,13 @@ class _DesktopLoginState extends State<DesktopLogin> {
                                       // ),
 
                                       // const SizedBox(height: 20),
-                                      const Text(
+                                      Text(
                                         "Welcome Back!",
                                         style: TextStyle(
                                           fontSize: 28,
                                           fontWeight: FontWeight.w700,
                                           letterSpacing: -0.5,
+                                          color: Colors.black,
                                         ),
                                       ),
 

@@ -24,13 +24,21 @@ class LoginScreen extends StatelessWidget {
         ? const Color(0xFFF5F7F6)
         : const Color(0xFF1E1E1E);
 
+    final textColor_1 = isDark
+        ? const Color.fromARGB(255, 159, 179, 169)
+        : const Color(0xFF1E1E1E);
+
     final secondaryTextColor = isDark ? const Color(0xFFA8B5B2) : Colors.grey;
 
     final borderColor = isDark
         ? const Color(0xFF31504B)
         : const Color(0xFFE2E2E2);
 
-    final primaryColor = isDark ? const Color(0xFF00A67D) : AppColors.primary;
+    final loginColor = isDark
+        ? const Color.fromARGB(255, 0, 0, 0)
+        : const Color.fromARGB(255, 255, 255, 255);
+
+    final primaryColor = isDark ? const Color(0xFFEAE26A) : AppColors.primary;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor,
@@ -77,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 21,
                         fontWeight: FontWeight.w800,
-                        color: primaryColor,
+                        color: textColor,
                       ),
                     ),
                     const SizedBox(height: 3),
@@ -85,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                       "Trade Smart, Pay Less",
                       style: TextStyle(
                         fontSize: 15,
-                        color: primaryColor,
+                        color: textColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -94,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         letterSpacing: 0.8,
                         fontSize: 12,
-                        color: primaryColor,
+                        color: textColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -106,14 +114,14 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: w * .06,
                         fontWeight: FontWeight.bold,
-                        color: textColor,
+                        color: textColor_1,
                       ),
                     ),
 
                     // const SizedBox(height: 8),
                     Text(
                       "Login to your trading account",
-                      style: TextStyle(color: textColor, fontSize: 17),
+                      style: TextStyle(color: textColor_1, fontSize: 17),
                     ),
 
                     SizedBox(height: h * .02, width: w * 0.2),
@@ -133,18 +141,21 @@ class LoginScreen extends StatelessWidget {
                       width: loginFieldWidth,
                       child: LoginField(
                         hint: "User ID",
-                        icon: "assets/icons/user.png",
+                        iconData: Icons.person_outline,
+                        iconColor: isDark ? Colors.white : AppColors.primary,
                         suffix: const Icon(
                           Icons.badge_outlined,
                           color: Colors.grey,
                         ),
+                        icon: '',
                       ),
                     ),
                     SizedBox(
                       width: loginFieldWidth,
                       child: LoginField(
                         hint: "Password",
-                        icon: "assets/icons/padlock.png",
+                        iconData: Icons.lock_outline,
+                        iconColor: isDark ? Colors.white : AppColors.primary,
                         obscure: true,
                         suffix: Padding(
                           padding: const EdgeInsets.all(15),
@@ -153,6 +164,7 @@ class LoginScreen extends StatelessWidget {
                             width: 18,
                           ),
                         ),
+                        icon: '',
                       ),
                     ),
 
@@ -163,7 +175,9 @@ class LoginScreen extends StatelessWidget {
                           width: loginFieldWidth,
                           child: LoginField(
                             hint: "OTP / TOTP",
-                            icon: "assets/icons/security.png",
+                            iconData: Icons.shield_outlined,
+                            iconColor: isDark ? Colors.white : AppColors.primary,
+                            icon: '',
                           ),
                         ),
 
@@ -175,8 +189,8 @@ class LoginScreen extends StatelessWidget {
                           child: OutlinedButton(
                             onPressed: () {},
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: primaryColor,
-                              side: BorderSide(color: primaryColor),
+                              foregroundColor: textColor_1,
+                              side: BorderSide(color: textColor_1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
@@ -196,7 +210,7 @@ class LoginScreen extends StatelessWidget {
                         onPressed: () {},
                         child: Text(
                           "Forgot Password?",
-                          style: TextStyle(color: primaryColor),
+                          style: TextStyle(color: textColor),
                         ),
                       ),
                     ),
@@ -214,21 +228,21 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18),
                           ),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "Login",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: loginColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Icon(
                               Icons.arrow_forward_rounded,
-                              color: Colors.white,
+                              color: loginColor,
                             ),
                           ],
                         ),
@@ -403,7 +417,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             const TextSpan(
-                              text: "₹1 per Trade in Cash and F&O",
+                              text: "₹1 per trade in Cash and F&O",
                             ),
                           ],
                         ),
@@ -415,7 +429,7 @@ class LoginScreen extends StatelessWidget {
                       child: Text(
                         "© 2026 1FC Securities Pvt. Ltd. All Rights Reserved.",
                         style: TextStyle(
-                          color: isDark ? const Color(0xFF6F8580) : Colors.grey,
+                          color: isDark ? const Color.fromARGB(255, 255, 255, 255) : Colors.grey,
                           fontSize: 10,
                           letterSpacing: 0.9,
                         ),
@@ -427,7 +441,7 @@ class LoginScreen extends StatelessWidget {
                       child: Text(
                         "Version 1.0.0",
                         style: TextStyle(
-                          color: isDark ? const Color(0xFF6F8580) : Colors.grey,
+                          color: isDark ? const Color.fromARGB(255, 255, 255, 255) : Colors.grey,
                           fontSize: 10,
                           letterSpacing: 0.7,
                         ),
